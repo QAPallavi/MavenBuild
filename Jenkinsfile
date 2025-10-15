@@ -72,7 +72,7 @@ pipeline {
         stage('Checkout from Git') {
             steps {
                 echo 'Cloning source code from GitHub...'
-                git branch: 'master', url: 'https://github.com/Debanjan-Bhatt/MavenBuild.git'
+                git branch: 'master', url: 'https://github.com/QAPallavi/MavenBuild.git'
             }
         }
 
