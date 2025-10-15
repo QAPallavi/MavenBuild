@@ -1,0 +1,271 @@
+Started by user admin
+
+Obtained Jenkinsfile from git https://github.com/QAPallavi/MavenBuild.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential githubcreds
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/QAPallavi/MavenBuild.git # timeout=10
+Fetching upstream changes from https://github.com/QAPallavi/MavenBuild.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.45.2.windows.1'
+using GIT_ASKPASS to set credentials GitHub Credentials
+ > git.exe fetch --tags --force --progress -- https://github.com/QAPallavi/MavenBuild.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision 5eeb1d789c17383fb5628eb2e3b844f6fc0f0a65 (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 5eeb1d789c17383fb5628eb2e3b844f6fc0f0a65 # timeout=10
+Commit message: "Update Jenkinsfile"
+ > git.exe rev-list --no-walk 5eeb1d789c17383fb5628eb2e3b844f6fc0f0a65 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout from Git)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Cloning source code from GitHub...
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/QAPallavi/MavenBuild.git # timeout=10
+Fetching upstream changes from https://github.com/QAPallavi/MavenBuild.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.45.2.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/QAPallavi/MavenBuild.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision 5eeb1d789c17383fb5628eb2e3b844f6fc0f0a65 (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 5eeb1d789c17383fb5628eb2e3b844f6fc0f0a65 # timeout=10
+ > git.exe branch -a -v --no-abbrev # timeout=10
+
+ > git.exe branch -D master # timeout=10
+ > git.exe checkout -b master 5eeb1d789c17383fb5628eb2e3b844f6fc0f0a65 # timeout=10
+Commit message: "Update Jenkinsfile"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build with Maven)
+
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+
+[Pipeline] echo
+Running Maven clean install...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2>"C:\apache-maven-3.9.9\bin\mvn" clean install 
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.java.example:java-example >--------------------
+[INFO] Building java-example 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ java-example ---
+[INFO] Deleting C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ java-example ---
+
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ java-example ---
+[INFO] Recompiling the module because of changed dependency.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 2 source files with javac [debug target 1.8] to target\classes
+
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ java-example ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ java-example ---
+[INFO] Recompiling the module because of changed dependency.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug target 1.8] to target\test-classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ java-example ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+
+[INFO] Running com.geekcap.vmturbo.ThingTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s -- in com.geekcap.vmturbo.ThingTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- war:3.3.2:war (default-war) @ java-example ---
+
+[INFO] Packaging webapp
+[INFO] Assembling webapp [java-example] in [C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\target\java-example]
+[INFO] Processing war project
+[INFO] Copying webapp resources [C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\src\main\webapp]
+[INFO] Building war: C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\target\java-example.war
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ java-example ---
+[INFO] Installing C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\pom.xml to C:\Windows\system32\config\systemprofile\.m2\repository\com\java\example\java-example\1.0-SNAPSHOT\java-example-1.0-SNAPSHOT.pom
+[INFO] Installing C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\target\java-example.war to C:\Windows\system32\config\systemprofile\.m2\repository\com\java\example\java-example\1.0-SNAPSHOT\java-example-1.0-SNAPSHOT.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.155 s
+[INFO] Finished at: 2025-10-15T23:16:44+05:30
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+
+[Pipeline] // withEnv
+[Pipeline] }
+
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test Execution with JUnit)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+
+[Pipeline] echo
+Running JUnit tests...
+[Pipeline] bat
+
+
+C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2>"C:\apache-maven-3.9.9\bin\mvn" test 
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.java.example:java-example >--------------------
+[INFO] Building java-example 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ java-example ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ java-example ---
+[INFO] Recompiling the module because of changed dependency.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 2 source files with javac [debug target 1.8] to target\classes
+
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ java-example ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\ProgramData\Jenkins\.jenkins\workspace\Java-CI-Pipeline@2\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ java-example ---
+[INFO] Recompiling the module because of changed dependency.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug target 1.8] to target\test-classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ java-example ---
+
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.geekcap.vmturbo.ThingTest
+
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.077 s -- in com.geekcap.vmturbo.ThingTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.038 s
+[INFO] Finished at: 2025-10-15T23:16:54+05:30
+[INFO] ------------------------------------------------------------------------
+Post stage
+[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+
+[Pipeline] echo
+✅ Build completed successfully!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+
+[Pipeline] // withEnv
+
+[Pipeline] }
+
+[Pipeline] // node
+[Pipeline] End of Pipeline
+
+Finished: SUCCESS
