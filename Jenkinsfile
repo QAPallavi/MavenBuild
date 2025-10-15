@@ -59,8 +59,7 @@ node {
      //   war: 'target/*.war'
     }
 }
-debanjan bhattacharya
-10:47 PM
+
 pipeline {
     agent any
 
