@@ -17,14 +17,14 @@ pipeline {
         stage('Build with Maven') {
             steps {
                 echo 'Running Maven clean install...'
-                bat '"C:\\ECIPSE\\apache-maven-3.9.9-bin\\apache-maven-3.9.9\\bin\\mvn" clean install'
+                bat '"C:\\apache-maven-3.9.9\\bin\\mvn" clean install'
             }
         }
 
         stage('Test Execution with JUnit') {
             steps {
                 echo 'Running JUnit tests...'
-                bat '"C:\\ECIPSE\\apache-maven-3.9.9-bin\\apache-maven-3.9.9\\bin\\mvn" test'
+                bat '"C:\\apache-maven-3.9.9\\bin\\mvn" test'
             }
             post {
                 always {
